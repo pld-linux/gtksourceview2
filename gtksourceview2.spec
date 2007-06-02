@@ -1,4 +1,7 @@
 #
+# Conditional build:
+%bcond_without	gnome	# disable gnomeprint support
+#
 Summary:	Text widget that extends the standard GTK+ 2.x
 Summary(pl.UTF-8):	Widget tekstowy rozszerzający standardowy z GTK+ 2.x
 Name:		gtksourceview2
@@ -15,8 +18,10 @@ BuildRequires:	gnome-common >= 2.12.0
 BuildRequires:	gtk+2-devel >= 2:2.10.9
 BuildRequires:	gtk-doc >= 1.8
 BuildRequires:	intltool >= 0.35.5
+%{?with_gnome:BuildRequires:	libgnomeprint-devel >= 2.18.0}
 BuildRequires:	libtool
 BuildRequires:	libxml2-devel >= 1:2.6.27
+BuildRequires:	pkgconfig
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -35,6 +40,7 @@ Summary:	GtkSourceView API documentation
 Summary(pl.UTF-8):	Dokumentacja API GtkSourceView
 Group:		Documentation
 Requires:	gtk-doc-common
+Conflicts:	gtksourceview-apidocs
 
 %description apidocs
 GtkSourceView API documentation.
@@ -48,7 +54,7 @@ Summary(pl.UTF-8):	Pliki nagłówkowe dla gtktextview
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	gtk+2-devel >= 2:2.10.9
-%{?with_gnome:Requires:	libgnomeprint-devel >= 2.17.92}
+%{?with_gnome:Requires:	libgnomeprint-devel >= 2.18.0}
 Requires:	libxml2-devel >= 1:2.6.27
 
 %description devel
@@ -87,9 +93,9 @@ Statyczna biblioteka gtksourceview.
 
 %install
 rm -rf $RPM_BUILD_ROOT
+
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
-
 
 %find_lang gtksourceview-2.0
 
