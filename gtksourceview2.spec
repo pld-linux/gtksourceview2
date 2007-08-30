@@ -5,22 +5,22 @@
 Summary:	Text widget that extends the standard GTK+ 2.x
 Summary(pl.UTF-8):	Widget tekstowy rozszerzający standardowy z GTK+ 2.x
 Name:		gtksourceview2
-Version:	1.90.3
+Version:	1.90.4
 Release:	1
 License:	GPL v2+
 Group:		X11/Libraries
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gtksourceview/1.90/gtksourceview-%{version}.tar.bz2
-# Source0-md5:	584f6bd1c4cc4411f6be7fe96e0c3af5
+# Source0-md5:	d4a1029c968ca61f8f65d3c22d4de07e
 URL:		http://www.gnome.org/
 BuildRequires:	autoconf >= 2.53
-BuildRequires:	automake
-BuildRequires:	gnome-common >= 2.12.0
-BuildRequires:	gtk+2-devel >= 2:2.10.9
+BuildRequires:	automake >= 1:1.8
+BuildRequires:	gnome-common >= 2.18.0
+BuildRequires:	gtk+2-devel >= 2:2.10.14
 BuildRequires:	gtk-doc >= 1.8
-BuildRequires:	intltool >= 0.35.5
+BuildRequires:	intltool >= 0.36.1
 %{?with_gnome:BuildRequires:	libgnomeprint-devel >= 2.18.0}
 BuildRequires:	libtool
-BuildRequires:	libxml2-devel >= 1:2.6.27
+BuildRequires:	libxml2-devel >= 1:2.6.29
 BuildRequires:	pkgconfig
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -53,9 +53,9 @@ Summary:	Header files for gtktextview
 Summary(pl.UTF-8):	Pliki nagłówkowe dla gtktextview
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	gtk+2-devel >= 2:2.10.9
+Requires:	gtk+2-devel >= 2:2.10.14
 %{?with_gnome:Requires:	libgnomeprint-devel >= 2.18.0}
-Requires:	libxml2-devel >= 1:2.6.27
+Requires:	libxml2-devel >= 1:2.6.29
 
 %description devel
 Header files for gtktextview.
