@@ -1,26 +1,22 @@
-#
-# Conditional build:
-%bcond_without	gnome	# disable gnomeprint support
-#
 Summary:	Text widget that extends the standard GTK+ 2.x
 Summary(pl.UTF-8):	Widget tekstowy rozszerzający standardowy z GTK+ 2.x
 Name:		gtksourceview2
-Version:	2.1.0
+Version:	2.1.2
 Release:	1
-License:	GPL v2+
+License:	GPL v2+ and LGPL v2+
 Group:		X11/Libraries
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gtksourceview/2.1/gtksourceview-%{version}.tar.bz2
-# Source0-md5:	1793b2eaac40208f78757e49ac06e30f
+# Source0-md5:	e9c574b1ea2e3f9a1cbe41e05c1885aa
 URL:		http://www.gnome.org/
-BuildRequires:	autoconf >= 2.53
+BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake >= 1:1.8
+BuildRequires:	gettext-devel
 BuildRequires:	gnome-common >= 2.20.0
-BuildRequires:	gtk+2-devel >= 2:2.12.0
+BuildRequires:	gtk+2-devel >= 2:2.12.5
 BuildRequires:	gtk-doc >= 1.8
 BuildRequires:	intltool >= 0.36.1
-%{?with_gnome:BuildRequires:	libgnomeprint-devel >= 2.18.0}
 BuildRequires:	libtool
-BuildRequires:	libxml2-devel >= 1:2.6.30
+BuildRequires:	libxml2-devel >= 1:2.6.31
 BuildRequires:	pkgconfig
 # sr@Latn vs. sr@latin
 Conflicts:	glibc-misc < 6:2.7
@@ -51,31 +47,30 @@ GtkSourceView API documentation.
 Dokumentacja API GtkSourceView.
 
 %package devel
-Summary:	Header files for gtktextview
-Summary(pl.UTF-8):	Pliki nagłówkowe dla gtktextview
+Summary:	Header files for GtkSourceView
+Summary(pl.UTF-8):	Pliki nagłówkowe dla GtkSourceView
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	gtk+2-devel >= 2:2.12.0
-%{?with_gnome:Requires:	libgnomeprint-devel >= 2.18.0}
-Requires:	libxml2-devel >= 1:2.6.30
+Requires:	gtk+2-devel >= 2:2.12.5
+Requires:	libxml2-devel >= 1:2.6.31
 
 %description devel
-Header files for gtktextview.
+Header files for GtkSourceView.
 
 %description devel -l pl.UTF-8
-Pliki nagłówkowe dla gtktextview.
+Pliki nagłówkowe dla GtkSourceView.
 
 %package static
-Summary:	Static gtksourceview library
-Summary(pl.UTF-8):	Statyczna biblioteka gtksourceview
-Group:		Development/Libraries
+Summary:	Static GtkSourceView library
+Summary(pl.UTF-8):	Statyczna biblioteka GtkSourceView
+Group:		X11/Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
-Static gtksourceview library.
+Static GtkSourceView library.
 
 %description static -l pl.UTF-8
-Statyczna biblioteka gtksourceview.
+Statyczna biblioteka GtkSourceView.
 
 %prep
 %setup -q -n gtksourceview-%{version}
@@ -86,6 +81,7 @@ Statyczna biblioteka gtksourceview.
 %{__libtoolize}
 %{__aclocal}
 %{__autoconf}
+%{__autoheader}
 %{__automake}
 %configure \
 	--enable-gtk-doc \
@@ -112,6 +108,7 @@ rm -rf $RPM_BUILD_ROOT
 %files -f gtksourceview-2.0.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libgtksourceview-2.0.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libgtksourceview-2.0.so.0
 %{_datadir}/gtksourceview-2.0
 
 %files apidocs
