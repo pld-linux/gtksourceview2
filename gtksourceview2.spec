@@ -1,18 +1,18 @@
 Summary:	Text widget that extends the standard GTK+ 2.x
 Summary(pl.UTF-8):	Widget tekstowy rozszerzający standardowy z GTK+ 2.x
 Name:		gtksourceview2
-Version:	2.2.2
+Version:	2.4.0
 Release:	1
 License:	GPL v2+ and LGPL v2+
 Group:		X11/Libraries
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gtksourceview/2.2/gtksourceview-%{version}.tar.bz2
-# Source0-md5:	104a7ae70a9bcb4596601cd017f35626
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gtksourceview/2.4/gtksourceview-%{version}.tar.bz2
+# Source0-md5:	e27588c897cd3a49d81b85466aec817f
 URL:		http://www.gnome.org/
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake >= 1:1.8
 BuildRequires:	gettext-devel
 BuildRequires:	gnome-common >= 2.20.0
-BuildRequires:	gtk+2-devel >= 2:2.12.5
+BuildRequires:	gtk+2-devel >= 2:2.14.0
 BuildRequires:	gtk-doc >= 1.8
 BuildRequires:	intltool >= 0.36.1
 BuildRequires:	libtool
@@ -51,7 +51,7 @@ Summary:	Header files for GtkSourceView
 Summary(pl.UTF-8):	Pliki nagłówkowe dla GtkSourceView
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	gtk+2-devel >= 2:2.12.5
+Requires:	gtk+2-devel >= 2:2.14.0
 Requires:	libxml2-devel >= 1:2.6.31
 
 %description devel
@@ -95,8 +95,6 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-[ -d $RPM_BUILD_ROOT%{_datadir}/locale/sr@latin ] || \
-	mv -f $RPM_BUILD_ROOT%{_datadir}/locale/sr@{Latn,latin}
 %find_lang gtksourceview-2.0
 
 %clean
