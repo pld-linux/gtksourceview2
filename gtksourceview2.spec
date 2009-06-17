@@ -1,12 +1,12 @@
 Summary:	Text widget that extends the standard GTK+ 2.x
 Summary(pl.UTF-8):	Widget tekstowy rozszerzający standardowy z GTK+ 2.x
 Name:		gtksourceview2
-Version:	2.6.2
+Version:	2.7.1
 Release:	1
 License:	GPL v2+ and LGPL v2+
 Group:		X11/Libraries
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gtksourceview/2.6/gtksourceview-%{version}.tar.bz2
-# Source0-md5:	5f94a7c9e31f81b4a1780a3a83df6413
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gtksourceview/2.7/gtksourceview-%{version}.tar.bz2
+# Source0-md5:	5aec59fbea62fc9d8112e8017e433ff4
 URL:		http://www.gnome.org/
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake >= 1:1.8
