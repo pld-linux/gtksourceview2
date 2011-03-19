@@ -11,12 +11,12 @@ URL:		http://www.gnome.org/
 BuildRequires:	autoconf >= 2.64
 BuildRequires:	automake >= 1:1.10.3
 BuildRequires:	docbook-dtd412-xml
-BuildRequires:	gettext-devel
+BuildRequires:	gettext-devel >= 0.17
 BuildRequires:	gnome-common >= 2.24.0
 BuildRequires:	gtk+2-devel >= 2:2.14.0
 BuildRequires:	gtk-doc >= 1.11
-BuildRequires:	intltool >= 0.36.1
-BuildRequires:	libtool
+BuildRequires:	intltool >= 0.40
+BuildRequires:	libtool >= 2:2.2.6
 BuildRequires:	libxml2-devel >= 1:2.6.31
 BuildRequires:	pkgconfig
 BuildRequires:	rpm-pythonprov
@@ -77,8 +77,6 @@ Statyczna biblioteka GtkSourceView.
 
 %prep
 %setup -q -n gtksourceview-%{version}
-sed -i s#^en@shaw## po/LINGUAS
-rm po/en@shaw.po
 
 %build
 %{__gtkdocize}
@@ -89,10 +87,10 @@ rm po/en@shaw.po
 %{__autoheader}
 %{__automake}
 %configure \
+	--disable-silent-rules \
 	--enable-gtk-doc \
 	--enable-static \
-	--with-html-dir=%{_gtkdocdir} \
-	--disable-silent-rules
+	--with-html-dir=%{_gtkdocdir}
 %{__make}
 
 %install
@@ -111,6 +109,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f gtksourceview-2.0.lang
 %defattr(644,root,root,755)
+%doc AUTHORS ChangeLog MAINTAINERS NEWS README
 %attr(755,root,root) %{_libdir}/libgtksourceview-2.0.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libgtksourceview-2.0.so.0
 %{_datadir}/gtksourceview-2.0
