@@ -2,7 +2,7 @@ Summary:	Text widget that extends the standard GTK+ 2.x
 Summary(pl.UTF-8):	Widget tekstowy rozszerzający standardowy z GTK+ 2.x
 Name:		gtksourceview2
 Version:	2.10.5
-Release:	2
+Release:	3
 License:	GPL v2+ and LGPL v2+
 Group:		X11/Libraries
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gtksourceview/2.10/gtksourceview-%{version}.tar.bz2
@@ -101,6 +101,8 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/libgtksourceview-2.0.la
+
 %find_lang gtksourceview-2.0
 
 %clean
@@ -122,7 +124,6 @@ rm -rf $RPM_BUILD_ROOT
 %files devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libgtksourceview-2.0.so
-%{_libdir}/libgtksourceview-2.0.la
 %{_includedir}/gtksourceview-2.0
 %{_pkgconfigdir}/gtksourceview-2.0.pc
 
