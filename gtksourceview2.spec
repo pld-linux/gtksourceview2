@@ -2,7 +2,7 @@ Summary:	Text widget that extends the standard GTK+ 2.x
 Summary(pl.UTF-8):	Widget tekstowy rozszerzający standardowy z GTK+ 2.x
 Name:		gtksourceview2
 Version:	2.10.5
-Release:	4
+Release:	5
 License:	GPL v2+ and LGPL v2+
 Group:		X11/Libraries
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gtksourceview/2.10/gtksourceview-%{version}.tar.bz2
@@ -42,6 +42,9 @@ Summary(pl.UTF-8):	Dokumentacja API GtkSourceView
 Group:		Documentation
 Requires:	gtk-doc-common
 Conflicts:	gtksourceview-apidocs
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description apidocs
 GtkSourceView API documentation.
