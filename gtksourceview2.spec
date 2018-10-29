@@ -7,7 +7,7 @@ License:	GPL v2+ and LGPL v2+
 Group:		X11/Libraries
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gtksourceview/2.10/gtksourceview-%{version}.tar.bz2
 # Source0-md5:	1219ad1694df136f126507466aeb41aa
-URL:		http://www.gnome.org/
+URL:		https://wiki.gnome.org/Projects/GtkSourceView
 BuildRequires:	autoconf >= 2.64
 BuildRequires:	automake >= 1:1.10.3
 BuildRequires:	docbook-dtd412-xml
