@@ -1,0 +1,11 @@
+--- gtksourceview-2.10.5/gtksourceview/gtksourceview.c~	2010-08-22 13:45:05.000000000 +0200
++++ gtksourceview-2.10.5/gtksourceview/gtksourceview.c	2025-08-02 12:06:56.036364220 +0200
+@@ -1766,7 +1766,7 @@ set_source_buffer (GtkSourceView *view,
+ 
+ 	if (buffer && GTK_IS_SOURCE_BUFFER (buffer))
+ 	{
+-		view->priv->source_buffer = g_object_ref (buffer);
++		view->priv->source_buffer = (GtkSourceBuffer *)g_object_ref (buffer);
+ 
+ 		g_signal_connect (buffer,
+ 				  "highlight_updated",

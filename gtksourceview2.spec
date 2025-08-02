@@ -2,11 +2,12 @@ Summary:	Text widget that extends the standard GTK+ 2.x
 Summary(pl.UTF-8):	Widget tekstowy rozszerzający standardowy z GTK+ 2.x
 Name:		gtksourceview2
 Version:	2.10.5
-Release:	7
+Release:	8
 License:	GPL v2+ and LGPL v2+
 Group:		X11/Libraries
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gtksourceview/2.10/gtksourceview-%{version}.tar.bz2
 # Source0-md5:	1219ad1694df136f126507466aeb41aa
+Patch0:		build.patch
 URL:		https://wiki.gnome.org/Projects/GtkSourceView
 BuildRequires:	autoconf >= 2.64
 BuildRequires:	automake >= 1:1.10.3
@@ -14,7 +15,6 @@ BuildRequires:	docbook-dtd412-xml
 BuildRequires:	gettext-tools >= 0.17
 BuildRequires:	gnome-common >= 2.24.0
 BuildRequires:	gtk+2-devel >= 2:2.14.0
-BuildRequires:	gtk-doc >= 1.11
 BuildRequires:	intltool >= 0.40
 BuildRequires:	libtool >= 2:2.2.6
 BuildRequires:	libxml2-devel >= 1:2.6.31
@@ -78,18 +78,19 @@ Statyczna biblioteka GtkSourceView.
 
 %prep
 %setup -q -n gtksourceview-%{version}
+%patch -P0 -p1
 
 %build
+%{__autopoint}
 %{__gtkdocize}
 %{__intltoolize}
 %{__libtoolize}
-%{__aclocal}
+%{__aclocal} -I m4
 %{__autoconf}
 %{__autoheader}
 %{__automake}
 %configure \
 	--disable-silent-rules \
-	--enable-gtk-doc \
 	--enable-static \
 	--with-html-dir=%{_gtkdocdir}
 %{__make}
